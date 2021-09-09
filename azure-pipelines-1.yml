@@ -11,10 +11,10 @@ variables:
   azureSubscription: 'f0ebce36-0f38-4163-afc9-8a5609f9b69c'
 
   # Function app name
-  functionAppName: 'StuartFunctionApp1'
+  functionAppName: 'StuartFALinux'
 
   # Agent VM image name
-  vmImageName: 'vs2017-win2016'
+  vmImageName: 'ubuntu-latest'
 
   # Working Directory
   workingDirectory: '$(Build.SourcesDirectory)'
@@ -70,7 +70,7 @@ stages:
             displayName: 'Azure functions app deploy'
             inputs:
               azureSubscription: '$(azureSubscription)'
-              appType: 'functionApp'
+              appType: 'functionAppLinux'
               appName: '$(functionAppName)'
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
-              deploymentMethod: 'zipDeploy'
+              runtimeStack: 'DOTNET|3.1'
